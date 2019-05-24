@@ -13,11 +13,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //이전에 입력한 값을 읽어오기
+        loadData()
+
         resultButton.setOnClickListener {
             //마지막에 입려한 내용 저장
             saveData(heightEditText.text.toString().toInt(),
                 weightEditText.text.toString().toInt())
-            
+
             // 결과 버튼이 클릭되면 할 일을 작성하는 부분
             startActivity<ResultActivity>(
                 "weight" to weightEditText.text.toString(),
@@ -25,6 +28,18 @@ class MainActivity : AppCompatActivity() {
             )
         }
         Toast.makeText(this, "bmi", Toast.LENGTH_SHORT).show()
+    }
+
+    //데이터 불러오기
+    private fun loadData() {
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val height = pref.getInt("KEY_HEIGHT", 0)
+        val weight = pref.getInt("KEY_WEIGHT", 0)
+
+        if (height !=0 && weight !=0) {
+            heightEditText.setText(height.toString())
+            weightEditText.setText(weight.toString())
+        }
     }
 
     //데이터 저장하기
