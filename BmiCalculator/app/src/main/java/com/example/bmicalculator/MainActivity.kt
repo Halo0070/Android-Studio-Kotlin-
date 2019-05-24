@@ -13,7 +13,10 @@ class MainActivity : AppCompatActivity() {
 
         resultButton.setOnClickListener{
             // 결과 버튼이 클릭되면 할 일을 작성하는 부분
-            startActivity<ResultActivity>()
+            startActivity<ResultActivity>(
+                "weight" to weightEditText.text.toString(),
+                "height" to heightEditText.text.toString()
+            )
         }
     }
 }
