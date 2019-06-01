@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
     <TextView
-            android:text="0"
+            android:text="@string/_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
@@ -15,9 +15,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large" android:textSize="100sp"
             app:layout_constraintVertical_bias="0.100000024"/>
     <TextView
-            android:text="00"
+            android:text="@string/_00"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="140dp"
-            tools:layout_editor_absoluteX="262dp" android:id="@+id/milliTextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/milliTextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBaseline_toBaselineOf="@+id/secTextView" android:layout_marginStart="28dp"
+            app:layout_constraintStart_toEndOf="@+id/secTextView"/>
 </android.support.constraint.ConstraintLayout>
