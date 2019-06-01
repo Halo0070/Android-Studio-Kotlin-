@@ -8,12 +8,11 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.stopwatch"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawbles.useSupportLibrary = true
     }
     buildTypes {
         release {
