@@ -20,6 +20,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/milliTextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBaseline_toBaselineOf="@+id/secTextView" android:layout_marginStart="28dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/secTextView" android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/secTextView"/>
 </android.support.constraint.ConstraintLayout>
