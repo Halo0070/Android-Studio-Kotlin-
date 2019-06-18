@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     //타이머 일시정지 구현
     private fun pause() {
-        fab.setImageResource(R.drawable.ic_play_arrow_black_24dp)
-        timerTask?.cancel()
+        fab.setImageResource(R.drawable.ic_play_arrow_black_24dp)   // 타이머 시작과 반대로 FAB를 클릭하면 이미지를 시작 이미지로 교체
+        timerTask?.cancel()     // 실행 중인 타이머가 있다면 타이머를 취소
     }
 }
