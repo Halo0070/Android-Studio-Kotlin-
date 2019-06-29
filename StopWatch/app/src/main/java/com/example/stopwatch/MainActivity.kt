@@ -27,6 +27,14 @@ class MainActivity : AppCompatActivity() {
                 pause()
             }
         }
+
+        lapButton.setOnClickListener{
+            recordLapTime()
+        }
+
+        resetFab.setOnClickListener{
+            reset()
+        }
     }
 
     //타이머 일시정지 구현
@@ -48,6 +56,21 @@ class MainActivity : AppCompatActivity() {
                 milliTextView.text = "$milli"
             }
         }
+    }
+
+    private fun reset() {
+        timerTask?.cancel()     // 실행 중인 타이머가 있다면 취소
+
+        // 모든 변수 초기화      // 모든 변수와 화면에 표시되는 모든 것을 초기화
+        time = 0
+        isRunning = false
+        fab.setImageResource(R.drawable.ic_play_arrow_black_24dp)
+        secTextView.text = "0"
+        milliTextView.text = "00"
+
+        // 모든 랩타임 제거
+        lapLayout.removeAllViews()
+        lap = 1
     }
 
     //랩 타임 기록 메서드
