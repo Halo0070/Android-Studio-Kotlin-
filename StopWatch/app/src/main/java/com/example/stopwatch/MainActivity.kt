@@ -2,6 +2,7 @@ package com.example.stopwatch
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.concurrent.timer
@@ -10,9 +11,11 @@ class MainActivity : AppCompatActivity() {
     private var time = 0    // 시간을 계산할 변수를 0으로 초기화
     private var isRunning = false
     private var timerTask: Timer? = null    // timerTask 변수를 null을 허용하는 Timer 타입으로 선언
+    private var lap = 1     // 변수 lap을 1로 초기화하여 선언
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         fab.setOnClickListener{
@@ -45,5 +48,16 @@ class MainActivity : AppCompatActivity() {
                 milliTextView.text = "$milli"
             }
         }
+    }
+
+    //랩 타임 기록 메서드
+    private fun recordLapTime() {
+        val lapTime = this.time         // 현재 시간을 지역 변수에 저장
+        val textView = TextView(this)   // 동적으로 TextView를 생성
+        textView.text = "$lap LAB : ${lapTime / 100}.${lapTime % 100}"  // '1 LAB : 5.35'와 같은 형태가 되도록 시간을 계산하여 문자열로 설정
+
+        // 맨 위에 랩타임 추가      // 맨 위에 추가하고 lap 변수는 다음을 위해 1만큼 증가(private var lap = 1)
+        lapLayout.addView(textView, 0)
+        lap++
     }
 }
