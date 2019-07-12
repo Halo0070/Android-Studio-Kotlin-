@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId) {
+        when(item?.itemId) {        // 메뉴 아이템으로 분기를 수행함.
             R.id.action_google, R.id.action_home -> {
                 webView.loadUrl("http://www.google.come")
                 return true
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 webView.loadUrl("http://www.daum.net")
                 return true
             }
-            R.id.action_call -> {
+            R.id.action_call -> {       // 연락처를 클릭하면 전화 앱을 엽니다. 이러한 방식을 암시적 인텐트라고 함.
                 val intent = Intent(Intent.ACTION_DIAL)
                 intent.data = Uri.parse("tel:031-123-4567")
                 if(intent.resolveActivity(packageManager) != null) {
@@ -80,6 +80,6 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item)    // when문에서는 각 메뉴 처리를 끝내고 true를 반환했고 내가 처리하고자 하는 경우를 제외한 그 이외의 경우에는 super 메서드를 호출하는 것이 안드로이드 시스템에서의 보편적인 규칙임.
     }
 }
