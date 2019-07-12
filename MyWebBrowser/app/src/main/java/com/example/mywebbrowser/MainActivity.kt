@@ -1,7 +1,11 @@
 package com.example.mywebbrowser
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,5 +42,44 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()       // 원래 동작을 수행.(즉 액티비티를 종료)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main, menu) // 메뉴 리소스를 액티빅티의 메뉴로 표시하려면 menuInflater 객채의 inflate() 메서드를 사용하여 메뉴 리소스를 지정함.
+        return true     // true를 반환하면 액티비티에 메뉴가 있다고 인식함.
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.action_google, R.id.action_home -> {
+                webView.loadUrl("http://www.google.come")
+                return true
+            }
+            R.id.action_naver -> {
+                webView.loadUrl("http://www.naver.com")
+                return true
+            }
+            R.id.action_daum -> {
+                webView.loadUrl("http://www.daum.net")
+                return true
+            }
+            R.id.action_call -> {
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:031-123-4567")
+                if(intent.resolveActivity(packageManager) != null) {
+                    startActivity(intent)
+                }
+                return true
+            }
+            R.id.action_send_text -> {
+                // 문자보내기
+                return true
+            }
+            R.id.action_email -> {
+                // 이메일 보내기
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
