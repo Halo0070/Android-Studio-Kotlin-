@@ -103,11 +103,11 @@ class MainActivity : AppCompatActivity() {
         when(item?.itemId){
             R.id.action_share -> {
                 // 페이지 공유
-                share(webView.url)
+                share(webView.url)      // 웹 페이지 주소를 문자열을 공유하는 앱을 사용해 공유
             }
             R.id.action_browser -> {
                 // 기본 웹 브라우저에서 열기
-                browse(webView.url)
+                browse(webView.url)     // 기기에 기본 브라우저로 웹 페이지 주소를 다시 연다.
             }
         }
         return super.onContextItemSelected(item)
