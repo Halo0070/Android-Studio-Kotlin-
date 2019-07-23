@@ -11,6 +11,10 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.browse
+import org.jetbrains.anko.email
+import org.jetbrains.anko.sendSMS
+import org.jetbrains.anko.share
 
 class MainActivity : AppCompatActivity() {
 
@@ -78,10 +82,12 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_send_text -> {
                 // 문자보내기
+                sendSMS("031-123-4567", webView.url)
                 return true
             }
             R.id.action_email -> {
                 // 이메일 보내기
+                email("test@example.com", "ㅋㅋ 사이트", webView.url)
                 return true
             }
         }
@@ -97,11 +103,11 @@ class MainActivity : AppCompatActivity() {
         when(item?.itemId){
             R.id.action_share -> {
                 // 페이지 공유
-                return true
+                share(webView.url)
             }
             R.id.action_browser -> {
                 // 기본 웹 브라우저에서 열기
-                return true
+                browse(webView.url)
             }
         }
         return super.onContextItemSelected(item)
