@@ -32,13 +32,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
+    private lateinit var tiltView: TiltView     // TiltView의 늦은 초기화 선언을 함.
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // 화면이 꺼지지 않게 하기
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         // 화면을 가로 모드로 고정
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        tiltView = TiltView(this)   // onCreate() 메서드에서 생성자에 this를 넘겨서 TiltView를 초기화 함.
+        setContentView(tiltView)        // tiliView를 전체 레이아웃으로 설정.
     }
 
     // 센서 등록
